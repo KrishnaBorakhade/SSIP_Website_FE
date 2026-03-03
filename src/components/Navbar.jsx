@@ -49,7 +49,7 @@ const Navbar = ({ theme, toggleTheme }) => {
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 order-2 lg:order-1 group min-w-0">
               <img 
-                src="https://raw.githubusercontent.com/Holonetssip/SSIP_Website_FE/main/public/logo.png" 
+                src="https://raw.githubusercontent.com/KrishnaBorakhade/SSIP_Website_FE/main/public/logo.png" 
                 alt="Study Smart Logo" 
                 className="h-8 md:h-10 w-auto object-contain group-hover:scale-105 transition-transform rounded-full" 
               />
