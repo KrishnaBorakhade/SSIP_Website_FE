@@ -458,99 +458,51 @@ const Home = () => {
         </div>
       </section>
 
-      {/* --- FEATURED COURSES SECTION (EXACT CARD DESIGN FROM COURSES PAGE) --- */}
+      {/* --- FEATURED COURSES SECTION --- */}
       <section className="py-24 bg-gradient-to-b from-slate-50 to-white dark:from-slate-800/50 dark:to-slate-900 border-y border-slate-100 dark:border-slate-800 relative z-10">
         <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex justify-between items-end mb-8">
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white flex items-center gap-4 tracking-tight">
-              <span className="w-2 h-10 bg-gradient-to-b from-blue-600 to-purple-600 rounded-full"></span>
-              Popular Courses
-            </h2>
-            
-            <div className="hidden md:flex gap-3">
-              <button onClick={() => scrollCourses('left')} className="p-3 rounded-full bg-white/50 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 hover:bg-white dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 transition shadow-sm hover:scale-110 active:scale-95">
-                <ChevronLeft size={24} />
-              </button>
-              <button onClick={() => scrollCourses('right')} className="p-3 rounded-full bg-white/50 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 hover:bg-white dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 transition shadow-sm hover:scale-110 active:scale-95">
-                <ChevronRight size={24} />
-              </button>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
+            <div>
+              <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary font-bold text-sm mb-4 tracking-widest uppercase">POPULAR COURSES</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Our Best Selling Programs</h2>
+              <p className="text-slate-500 dark:text-slate-400 mt-2">Handpicked premium courses for UPSC & UPPCS preparation</p>
             </div>
+            <Link to="/courses" className="mt-4 md:mt-0 px-6 py-3 bg-slate-900 dark:bg-slate-700 text-white rounded-xl font-bold hover:bg-primary dark:hover:bg-primary hover:-translate-y-1 transition-all flex items-center gap-2 shadow-lg">
+              View All Courses <ChevronRight size={18} />
+            </Link>
           </motion.div>
 
-          <div 
-            ref={courseScrollRef}
-            className="flex overflow-x-auto snap-x snap-mandatory gap-8 pb-12 pt-4 px-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] scroll-smooth"
-          >
+          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
             {featuredCourses.map((course, idx) => (
               <motion.a 
-                key={idx}
+                key={idx} 
                 href={course.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ delay: idx * 0.05, duration: 0.5, ease: "easeOut" }}
-                className="snap-start shrink-0 w-[320px] md:w-[400px] relative group block outline-none"
+                variants={fadeInUp} 
+                whileHover={{ y: -10 }} 
+                className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-[2rem] shadow-xl hover:shadow-2xl border border-white/50 dark:border-slate-700 overflow-hidden group transition-all duration-300 flex flex-col"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-primary rounded-[2rem] blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 -z-10"></div>
+                {/* Changed object-contain to object-cover to fit container perfectly without stretching */}
+                <div className="w-full aspect-video relative overflow-hidden bg-slate-100 dark:bg-slate-800/50 p-2">
+                  <div className="w-full h-full rounded-[1.2rem] overflow-hidden relative">
+                    <img src={course.img} alt={course.title} className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" />
+                    <div className={`absolute inset-0 bg-gradient-to-t ${course.color} opacity-20 group-hover:opacity-40 transition-opacity duration-300 pointer-events-none`}></div>
+                  </div>
+                </div>
                 
-                <div className="h-full flex flex-col bg-white/70 dark:bg-slate-900/60 backdrop-blur-2xl border border-white/40 dark:border-slate-700/50 rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl group-hover:-translate-y-1 transition-all duration-300 relative">
-                  
-                  {course.badge && (
-                    <div className="absolute top-4 right-4 z-20 px-3 py-1 text-white text-[10px] font-black uppercase tracking-widest rounded-full shadow-lg flex items-center gap-1 bg-gradient-to-r from-orange-500 to-red-500">
-                      <Flame size={12} /> {course.badge}
-                    </div>
-                  )}
-
-                  <div className="relative h-48 overflow-hidden bg-slate-200 dark:bg-slate-800 p-2">
-                     <div className="w-full h-full rounded-[1.5rem] overflow-hidden relative">
-                        <img src={course.img} alt={course.title} className="w-full h-full object-contain bg-white dark:bg-slate-900 transition-transform duration-700 ease-in-out group-hover:scale-110" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
-                        <div className="absolute top-3 left-3 px-3 py-1 bg-white/20 backdrop-blur-md rounded-xl text-xs font-bold text-white uppercase tracking-wider border border-white/30 shadow-sm">
-                          {course.category}
-                        </div>
-                        <div className="absolute bottom-3 left-3 right-3 flex justify-between items-center text-white z-10">
-                          <div className="flex items-center gap-1.5 text-yellow-400 text-sm font-bold bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/10">
-                            <Star size={14} fill="currentColor"/> {course.rating}
-                          </div>
-                          <div className="flex items-center gap-1.5 text-xs font-medium text-white/90 bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/10">
-                            <Users size={12}/> {course.students}
-                          </div>
-                        </div>
-                     </div>
+                <div className="p-5 flex-1 flex flex-col justify-between text-center gap-4">
+                  <div className="flex flex-col gap-2">
+                    <span className="text-[10px] font-bold text-primary uppercase tracking-wider">{course.category}</span>
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-white line-clamp-2 group-hover:text-primary transition-colors">{course.title}</h3>
                   </div>
-
-                  <div className="p-6 flex-1 flex flex-col relative z-10 bg-gradient-to-b from-transparent to-white/50 dark:to-slate-900/50">
-                     <h3 className="text-xl md:text-2xl font-extrabold text-slate-900 dark:text-white mb-3 leading-tight transition-colors group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-500">
-                       {course.title}
-                     </h3>
-                     
-                     <div className="flex flex-wrap items-center gap-3 mb-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
-                        <span className="flex items-center gap-1"><ShieldCheck size={14} className="text-emerald-500"/> Verified</span>
-                        <span className="flex items-center gap-1"><Clock size={14} className="text-primary"/> {course.duration}</span>
-                     </div>
-
-                     <p className="text-slate-600 dark:text-slate-300 text-sm mb-8 flex-1 line-clamp-2 leading-relaxed font-medium">
-                       {course.desc}
-                     </p>
-                     
-                     <div className="flex items-center justify-between pt-5 border-t border-slate-200 dark:border-slate-800">
-                        <div className="flex flex-col">
-                          <span className="text-xs text-slate-400 line-through font-semibold mb-0.5">{course.oldPrice}</span>
-                          <span className="text-2xl font-black text-slate-900 dark:text-white leading-none">{course.price}</span>
-                        </div>
-                        
-                        <div className="flex items-center gap-2 px-5 py-2.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-bold text-sm shadow-lg group-hover:bg-primary dark:group-hover:bg-primary group-hover:text-white transition-all">
-                          Enroll Now <ExternalLink size={16} />
-                        </div>
-                     </div>
-                  </div>
+                  <button className="w-full py-2.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-bold text-sm shadow-md group-hover:bg-primary dark:group-hover:bg-primary group-hover:text-white transition-all flex items-center justify-center gap-2">
+                    Enroll Now <ExternalLink size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  </button>
                 </div>
               </motion.a>
             ))}
-            <div className="shrink-0 w-4 md:w-8"></div>
-          </div>
+          </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center py-12 mt-8">
             <p className="text-slate-500 dark:text-slate-400 mb-8 text-lg max-w-xl mx-auto">
@@ -632,6 +584,17 @@ const Home = () => {
                     </div>
                  </button>
               </div>
+
+              <ul className="space-y-4 mb-10 text-left max-w-md mx-auto lg:mx-0">
+                {['Access to Premium Video Lectures & Notes', 'Offline Downloads to study without internet', 'Daily Quizzes & Current Affairs updates'].map((feature, i) => (
+                  <li key={i} className="flex items-center gap-3 text-slate-300">
+                    <div className="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">
+                      <CheckCircle size={14} className="text-emerald-400" />
+                    </div>
+                    <span className="font-medium">{feature}</span>
+                  </li>
+                ))}
+              </ul>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <a href="https://aalexis.page.link/BYyH" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center gap-3 px-8 py-4 bg-white hover:bg-slate-100 text-slate-900 rounded-2xl font-extrabold text-lg transition-all shadow-[0_0_40px_rgba(255,255,255,0.2)] hover:shadow-[0_0_60px_rgba(255,255,255,0.4)] hover:-translate-y-1">
