@@ -6,6 +6,16 @@ import {
   Smartphone, DownloadCloud, Play, Star, Apple, Lightbulb
 } from 'lucide-react';
 
+// --- IMPORT IMAGES DIRECTLY ---
+import shubhamImg from '../assets/Shubham Prakash.jpg';
+import rushirajImg from '../assets/RB.jpg';
+import vikasImg from '../assets/Vikas Sharma.jpg';
+import nehaImg from '../assets/Neha Vashisht.jpg';
+import saurabhImg from '../assets/Saurabh Singh.jpg';
+import khwahishImg from '../assets/Khwahish Sharma.jpg';
+import anshulImg from '../assets/Anshul Pandey.jpg';
+import shivangiImg from '../assets/Shivangi Singh.jpg';
+
 // --- 1. Number Roll Component ---
 const CountUp = ({ value, suffix = "" }) => {
   const ref = useRef(null);
@@ -48,7 +58,6 @@ const FloatingItem = ({ Icon, label, x, y, delay, color }) => (
 
 // --- 3. REALISTIC REPLAYABLE ARCHERY ANIMATION ---
 const ArcheryAnimation = ({ inView }) => {
-  // State to trigger re-animation on click
   const [playCount, setPlayCount] = useState(0);
 
   return (
@@ -130,18 +139,17 @@ const ArcheryAnimation = ({ inView }) => {
   );
 };
 
-// --- 4. ACTUAL STUDY SMART TEAM DATA ---
+// --- 4. ACTUAL STUDY SMART TEAM DATA (Using imported variables) ---
 const teamMembers = [
-  { name: "Shubham Prakash", role: "Founder, Btech, IIT (Dhn)", exp: "4+ Years", subject: "General Studies & Strategy", img: "src/assets/Shubham Prakash.jpg" },
-  { name: "Rushiraj Singh Rathore", role: "Btech, SSGMCE", exp: "2+ Years", subject: "Economy", img: "src/assets/RB.jpg" },
-  { name: "Vikas Sharma", role: "BA & MA (History)", exp: "2+ Years", subject: "Polity & Governance", img: "src/assets/Vikas Sharma.jpg" },
-  { name: "Neha Vashisht", role: "BA & MA(Psychology)", exp: "1.5+ Years", subject: "Current Affairs & Answer Writing", img: "src/assets/Neha Vashisht.jpg" },
-  { name: "Saurabh Singh", role: "B.tech(JNU), BA", exp: "3+ Years", subject: "History, Polity", img: "src/assets/Saurabh Singh.jpg" },
-  { name: "Khwahish Sharma", role: "MBA(IIM Indore), BSc (Geography)", exp: "5+ Years", subject: "Geography", img: "src/assets/Khwahish Sharma.jpg" },
-  { name: "Anshul Pandey", role: "B.tech (JNU), Ex ITBP Inspector", exp: "3+ Years", subject: "Science & Technology", img: "src/assets/Anshul Pandey.jpg" },
-  { name: "Shivangi Singh", role: "Masters in PubAd, CCSU Meerut", exp: "5+ Years", subject: "Hindi", img: "src/assets/Shivangi Singh.jpg" },
+  { name: "Shubham Prakash", role: "Founder, Btech, IIT (Dhn)", exp: "4+ Years", subject: "General Studies & Strategy", img: shubhamImg },
+  { name: "Rushiraj Singh Rathore", role: "Btech, SSGMCE", exp: "2+ Years", subject: "Economy", img: rushirajImg },
+  { name: "Vikas Sharma", role: "BA & MA (History)", exp: "2+ Years", subject: "Polity & Governance", img: vikasImg },
+  { name: "Neha Vashisht", role: "BA & MA(Psychology)", exp: "1.5+ Years", subject: "Current Affairs & Answer Writing", img: nehaImg },
+  { name: "Saurabh Singh", role: "B.tech(JNU), BA", exp: "3+ Years", subject: "History, Polity", img: saurabhImg },
+  { name: "Khwahish Sharma", role: "MBA(IIM Indore), BSc (Geography)", exp: "5+ Years", subject: "Geography", img: khwahishImg },
+  { name: "Anshul Pandey", role: "B.tech (JNU), Ex ITBP Inspector", exp: "3+ Years", subject: "Science & Technology", img: anshulImg },
+  { name: "Shivangi Singh", role: "Masters in PubAd, CCSU Meerut", exp: "5+ Years", subject: "Hindi", img: shivangiImg },
 ];
-
 
 const About = () => {
   const sliderRef = useRef(null);
