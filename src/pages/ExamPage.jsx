@@ -73,7 +73,7 @@ const ExamPage = () => {
     );
   }
 
-  // Animation variants for the Grid
+  // Animation variants optimized with easeOut for performance
   const staggerContainer = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
@@ -86,30 +86,31 @@ const ExamPage = () => {
 
   return (
     <>
-      <div className="pt-28 pb-20 min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors relative overflow-hidden font-sans">
+      <div className="pt-24 md:pt-28 pb-16 md:pb-20 min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors relative overflow-hidden font-sans w-full">
         
-        {/* Deep Glassmorphism Animated Background */}
+        {/* Deep Glassmorphism Animated Background (GPU Optimized, Blurs hidden on mobile) */}
         <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] mix-blend-overlay"></div>
-          <motion.div animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3], rotate: [0, 90, 0] }} transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }} className="absolute -top-[10%] -left-[10%] w-[800px] h-[800px] bg-blue-600/20 rounded-full blur-[150px]" />
-          <motion.div animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.6, 0.3], rotate: [0, -90, 0] }} transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[30%] -right-[10%] w-[800px] h-[800px] bg-purple-600/20 rounded-full blur-[150px]" />
+          <motion.div animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3], rotate: [0, 90, 0] }} transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }} className="hidden md:block absolute -top-[10%] -left-[10%] w-[600px] lg:w-[800px] h-[600px] lg:h-[800px] bg-blue-600/20 rounded-full blur-[150px] transform-gpu" />
+          <motion.div animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.6, 0.3], rotate: [0, -90, 0] }} transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }} className="hidden md:block absolute top-[30%] -right-[10%] w-[600px] lg:w-[800px] h-[600px] lg:h-[800px] bg-purple-600/20 rounded-full blur-[150px] transform-gpu" />
         </div>
 
-        <div className="container mx-auto px-4 sm:px-6 relative z-10 max-w-[1600px]">
-          <Link to="/" className="inline-flex items-center gap-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary mb-8 transition-colors font-bold text-sm bg-white/40 dark:bg-slate-800/40 backdrop-blur-md px-4 py-2 rounded-xl border border-white/50 dark:border-slate-700/50">
+        {/* Adjusted max-width and padding for perfectly centered laptop view */}
+        <div className="container mx-auto px-4 md:px-6 lg:px-10 relative z-10 max-w-[1400px]">
+          <Link to="/" className="inline-flex items-center gap-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary mb-6 md:mb-8 transition-colors font-bold text-xs md:text-sm bg-white/40 dark:bg-slate-800/40 backdrop-blur-md px-4 py-2 rounded-xl border border-white/50 dark:border-slate-700/50 transform-gpu active:scale-95">
              <ArrowLeft size={16} /> Back to Home
           </Link>
           
           {/* Header Section */}
-          <div className="mb-12 border-b border-slate-200/50 dark:border-slate-800/50 pb-10">
-            <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/50 dark:bg-slate-800/50 backdrop-blur-xl border border-white/60 dark:border-slate-700/60 text-primary dark:text-purple-400 font-extrabold text-sm mb-6 shadow-sm">
+          <div className="mb-10 md:mb-12 border-b border-slate-200/50 dark:border-slate-800/50 pb-8 md:pb-10 text-center md:text-left">
+            <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center justify-center gap-2 px-4 md:px-5 py-2 md:py-2.5 rounded-full bg-white/50 dark:bg-slate-800/50 backdrop-blur-xl border border-white/60 dark:border-slate-700/60 text-primary dark:text-purple-400 font-extrabold text-xs md:text-sm mb-4 md:mb-6 shadow-sm transform-gpu">
                <BookOpen size={16} /> Official Playlists
             </motion.div>
             
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white mb-6 tracking-tighter">
-              {currentExam.title} <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Playlists</span>
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 dark:text-white mb-4 md:mb-6 tracking-tighter leading-tight">
+              {currentExam.title} <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 block sm:inline">Playlists</span>
             </motion.h1>
-            <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-3xl font-medium">{currentExam.description}</p>
+            <p className="text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-3xl font-medium mx-auto md:mx-0">{currentExam.description}</p>
           </div>
 
           {/* --- MATRIX GRID COMPONENT --- */}
@@ -119,72 +120,73 @@ const ExamPage = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8 mb-20"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6 lg:gap-8 mb-16 md:mb-20"
           >
             {currentExam.videos.map((video, idx) => (
               <motion.div 
                 key={video.id}
                 variants={fadeInUp}
                 onClick={() => handlePlaylistClick(video)}
-                className="relative group cursor-pointer h-full"
+                className="relative group cursor-pointer h-full transform-gpu"
               >
                 {/* Glowing Hover Background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-primary rounded-[2rem] blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 -z-10"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-primary rounded-[2rem] blur-xl opacity-0 md:group-hover:opacity-40 transition-opacity duration-500 -z-10"></div>
                 
-                {/* Main Card */}
-                <div className="h-full flex flex-col bg-white/60 dark:bg-slate-900/50 backdrop-blur-2xl border border-white/50 dark:border-slate-700/50 rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-2">
+                {/* Main Card (Restricted Y-translation to desktop to stop touch glitches) */}
+                <div className="h-full flex flex-col bg-white/60 dark:bg-slate-900/50 backdrop-blur-2xl border border-white/50 dark:border-slate-700/50 rounded-[2rem] overflow-hidden shadow-md md:hover:shadow-2xl transition-all duration-300 md:group-hover:-translate-y-2">
                   
                   {/* YouTube Iframe Thumbnail Area */}
-                  <div className="relative h-48 overflow-hidden p-2">
+                  <div className="relative h-44 sm:h-48 overflow-hidden p-2 shrink-0">
                     <div className="w-full h-full rounded-[1.5rem] overflow-hidden relative bg-black flex items-center justify-center">
                         
-                        {/* Embedded YouTube Playlist (Pointer Events None to allow card click) */}
+                        {/* Embedded YouTube Playlist (REMOVED loading="lazy" TO FIX RENDERING BUG) */}
                         <iframe 
                           src={video.embed} 
                           title={video.title}
-                          loading="lazy"
                           className="w-[120%] h-[120%] pointer-events-none scale-[1.2]" 
                           frameBorder="0"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                           allowFullScreen
                         ></iframe>
                         
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/30 to-transparent"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/30 to-transparent pointer-events-none"></div>
                         
                         {/* Stats Indicator */}
-                        <div className="absolute top-0 right-0 bottom-0 w-[35%] bg-black/70 backdrop-blur-md flex flex-col items-center justify-center text-white border-l border-white/10 group-hover:bg-primary/90 transition-colors duration-300">
-                          <Layers size={24} className="mb-1.5" />
-                          <span className="font-bold text-sm">{video.lessons}</span>
-                          <span className="text-[10px] text-white/70 uppercase tracking-wider font-semibold text-center">Videos</span>
+                        <div className="absolute top-0 right-0 bottom-0 w-[35%] bg-black/70 backdrop-blur-md flex flex-col items-center justify-center text-white border-l border-white/10 md:group-hover:bg-primary/90 transition-colors duration-300 pointer-events-none">
+                          <Layers size={20} className="mb-1 sm:mb-1.5 md:w-6 md:h-6" />
+                          <span className="font-bold text-xs sm:text-sm">{video.lessons}</span>
+                          <span className="text-[8px] sm:text-[10px] text-white/70 uppercase tracking-wider font-semibold text-center">Videos</span>
                         </div>
 
                         {/* Play Button Hover Effect */}
-                        <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <div className="w-14 h-14 bg-red-600/90 backdrop-blur-xl rounded-full flex items-center justify-center border border-white/40 shadow-[0_0_30px_rgba(255,0,0,0.5)]">
-                              <PlayCircle size={30} className="text-white fill-white/80" />
+                        <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                          <div className="w-12 h-12 sm:w-14 sm:h-14 bg-red-600/90 backdrop-blur-xl rounded-full flex items-center justify-center border border-white/40 shadow-[0_0_30px_rgba(255,0,0,0.5)]">
+                              <PlayCircle size={24} className="text-white fill-white/80 sm:w-[30px] sm:h-[30px]" />
                           </div>
                         </div>
                     </div>
                   </div>
 
                   {/* Text Content */}
-                  <div className="p-5 flex-1 flex flex-col relative z-10">
-                    <div className="flex justify-between items-start mb-3">
-                        <span className="px-2.5 py-1 bg-blue-100/50 dark:bg-blue-900/30 backdrop-blur-md text-blue-700 dark:text-blue-300 rounded-lg text-[10px] font-bold uppercase tracking-wider border border-blue-200/50 dark:border-blue-700/50">
-                          {examName.toUpperCase()} Series
-                        </span>
-                        <span className="flex items-center gap-1 text-yellow-500 font-bold text-xs bg-yellow-50/50 dark:bg-yellow-900/20 px-2 py-1 rounded-lg">
-                          <Star size={12} fill="currentColor"/> {video.rating}
-                        </span>
+                  <div className="p-4 sm:p-5 flex-1 flex flex-col relative z-10 justify-between">
+                    <div>
+                      <div className="flex justify-between items-start mb-3 gap-2">
+                          <span className="px-2 sm:px-2.5 py-1 bg-blue-100/50 dark:bg-blue-900/30 backdrop-blur-md text-blue-700 dark:text-blue-300 rounded-lg text-[9px] sm:text-[10px] font-bold uppercase tracking-wider border border-blue-200/50 dark:border-blue-700/50 whitespace-nowrap">
+                            {examName.toUpperCase()} Series
+                          </span>
+                          <span className="flex items-center gap-1 text-yellow-500 font-bold text-[10px] sm:text-xs bg-yellow-50/50 dark:bg-yellow-900/20 px-2 py-1 rounded-lg whitespace-nowrap shrink-0">
+                            <Star size={10} className="sm:w-3 sm:h-3" fill="currentColor"/> {video.rating}
+                          </span>
+                      </div>
+                      
+                      <h3 className="font-extrabold text-base sm:text-lg text-slate-900 dark:text-white md:group-hover:text-transparent md:group-hover:bg-clip-text md:group-hover:bg-gradient-to-r md:group-hover:from-blue-600 md:group-hover:to-purple-600 transition-all leading-snug line-clamp-3">
+                        {video.title}
+                      </h3>
                     </div>
                     
-                    <h3 className="font-extrabold text-lg text-slate-900 dark:text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all leading-snug line-clamp-3">
-                      {video.title}
-                    </h3>
-                    
-                    <div className="mt-auto pt-5 flex items-center gap-2 text-red-600 dark:text-red-400 font-bold text-xs group-hover:translate-x-1 transition-transform">
-                        <div className="w-6 h-6 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
-                          <Youtube size={14} className="text-red-600 dark:text-red-400"/>
+                    <div className="mt-4 sm:mt-auto pt-4 sm:pt-5 flex items-center gap-2 text-red-600 dark:text-red-400 font-bold text-[11px] sm:text-xs md:group-hover:translate-x-1 transition-transform">
+                        <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center shrink-0">
+                          <Youtube size={12} className="text-red-600 dark:text-red-400 sm:w-[14px] sm:h-[14px]"/>
                         </div>
                         Watch on YouTube
                     </div>
@@ -204,27 +206,27 @@ const ExamPage = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/80 backdrop-blur-md p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/80 backdrop-blur-md p-4 transform-gpu"
           >
             <motion.div 
               initial={{ scale: 0.9, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
-              className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 p-8 rounded-[2rem] shadow-2xl max-w-sm w-full text-center flex flex-col items-center"
+              className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 p-6 md:p-8 rounded-[2rem] shadow-2xl max-w-[90vw] sm:max-w-sm w-full text-center flex flex-col items-center transform-gpu"
             >
-              <div className="w-20 h-20 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mb-6 relative">
-                <Youtube size={40} className="text-red-600 dark:text-red-500 relative z-10" />
+              <div className="w-16 h-16 md:w-20 md:h-20 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mb-4 md:mb-6 relative">
+                <Youtube size={32} className="md:w-10 md:h-10 text-red-600 dark:text-red-500 relative z-10" />
                 <motion.div 
                   animate={{ rotate: 360 }} 
                   transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-                  className="absolute inset-0 border-4 border-transparent border-t-red-500 rounded-full"
+                  className="absolute inset-0 border-4 border-transparent border-t-red-500 rounded-full transform-gpu"
                 />
               </div>
-              <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-2">Redirecting...</h3>
-              <p className="text-slate-500 dark:text-slate-400 font-medium">Taking you to the official YouTube playlist.</p>
+              <h3 className="text-xl md:text-2xl font-black text-slate-900 dark:text-white mb-2">Redirecting...</h3>
+              <p className="text-sm md:text-base text-slate-500 dark:text-slate-400 font-medium">Taking you to the official YouTube playlist.</p>
               
-              <div className="mt-8 flex items-center gap-2 text-sm text-slate-400 dark:text-slate-500">
-                <Loader2 size={16} className="animate-spin" /> Please wait
+              <div className="mt-6 md:mt-8 flex items-center gap-2 text-xs md:text-sm text-slate-400 dark:text-slate-500">
+                <Loader2 size={14} className="md:w-4 md:h-4 animate-spin" /> Please wait
               </div>
             </motion.div>
           </motion.div>
