@@ -136,12 +136,12 @@ const ArcheryAnimation = ({ inView }) => {
 
 // --- 4. ACTUAL STUDY SMART TEAM DATA ---
 const teamMembers = [
-  { name: "Shubham Prakash", role: "Founder, Btech, IIT (Dhn)", exp: "4+ Years", subject: "General Studies & Strategy", img: shubhamImg },
+  { name: "Shubham Prakash", role: "Founder, Btech, IIT (Dhn)", exp: "4+ Years", subject: "Current Affairs & CSAT", img: shubhamImg },
   { name: "Rushiraj Singh Rathore", role: "Btech, SSGMCE", exp: "2+ Years", subject: "Economy", img: rushirajImg },
-  { name: "Vikas Sharma", role: "BA & MA (History)", exp: "2+ Years", subject: "Polity & Governance", img: vikasImg },
+  { name: "Vikas Sharma", role: "BA & MA (History)", exp: "2+ Years", subject: "History", img: vikasImg },
   { name: "Neha Vashisht", role: "BA & MA(Psychology)", exp: "1.5+ Years", subject: "Current Affairs & Answer Writing", img: nehaImg },
   { name: "Saurabh Singh", role: "B.tech(JNU), BA", exp: "3+ Years", subject: "History, Polity", img: saurabhImg },
-  { name: "Khwahish Sharma", role: "MBA(IIM Indore), BSc (Geography)", exp: "5+ Years", subject: "Geography", img: khwahishImg },
+  { name: "Khwahish Sharma", role: "MBA(IIM Indore), BSc (Geography)", exp: "5+ Years", subject: "Geography & Environment", img: khwahishImg },
   { name: "Anshul Pandey", role: "B.tech (JNU), Ex ITBP Inspector", exp: "3+ Years", subject: "Science & Technology", img: anshulImg },
   { name: "Shivangi Singh", role: "Masters in PubAd, CCSU Meerut", exp: "5+ Years", subject: "Hindi", img: shivangiImg },
 ];
