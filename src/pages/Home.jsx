@@ -179,12 +179,33 @@ const Home = () => {
   ];
 
   // --- FEATURED COURSES WITH SPECIFIC URLS AND COLORS ---
+  // --- FEATURED COURSES WITH PRICING ---
   const featuredCourses = [
-    { id: "upsc-2", category: "UPSC Prelims", title: "PYQ Reverse Engineering", desc: "Master the art of decoding previous year questions to predict future exam patterns.", img: "https://courses-assets-v2.classplus.co/_next/image?url=/api/proxyimage?url=https%3A%2F%2Fcdn-wl-assets.classplus.co%2Fproduction%2Fsingle%2Fkedvtr%2F0326fec9-da8e-4e7f-b71f-6564bcae1122.png&w=384&q=75", color: "from-blue-500 to-cyan-500" },
-    { id: "upsc-4", category: "UPSC Prelims", title: "NCERT Concept Roots", desc: "Line-by-line coverage of fundamental NCERTs to build a rock-solid base.", img: "https://courses-assets-v2.classplus.co/_next/image?url=/api/proxyimage?url=https%3A%2F%2Fcdn-wl-assets.classplus.co%2Fproduction%2Fsingle%2Fkedvtr%2F0fdd717f-65a9-4f92-9c22-87eb32d77a93.png&w=384&q=75", link: "https://www.studysmartiaspcs.com/courses/770972?mainCategory=0&subCatList=%5B342039%5D", color: "from-purple-500 to-pink-500" },
-    { id: "uppcs-p-2", category: "UPPCS Prelims", title: "Granth (UPPCS 2025)", desc: "The ultimate preparatory material tailored for UPPCS 2025 Prelims.", img: "https://courses-assets-v2.classplus.co/_next/image?url=/api/proxyimage?url=https%3A%2F%2Fcdn-wl-assets.classplus.co%2Fproduction%2Fsingle%2Fkedvtr%2F9bade139-7424-4543-946d-4ba4b105487f.png&w=384&q=75", link: "https://www.studysmartiaspcs.com/courses/721212?mainCategory=0&subCatList=%5B343651%5D", color: "from-orange-500 to-amber-500", badge: "Trending" },
-    { id: "uppcs-m-1", category: "UPPCS Mains", title: "MahaGranth", desc: "The definitive Mains coverage batch. Deep dive into all GS papers with answer writing.", img: "https://courses-assets-v2.classplus.co/_next/image?url=/api/proxyimage?url=https%3A%2F%2Fcdn-wl-assets.classplus.co%2Fproduction%2Fsingle%2Fkedvtr%2F8287d028-202c-441b-990d-f49b7224190d.png&w=384&q=75", link: "https://www.studysmartiaspcs.com/courses/770999?mainCategory=0&subCatList=%5B343654%5D", color: "from-rose-500 to-red-500", badge: "Flagship" },
-    { id: "uppcs-p-4", category: "UPPCS Prelims", title: "CAC 3.0", desc: "Current Affairs Compilation version 3.0 optimized for UPPCS specific events.", img: "https://courses-assets-v2.classplus.co/_next/image?url=/api/proxyimage?url=https%3A%2F%2Fcdn-wl-assets.classplus.co%2Fproduction%2Fsingle%2Fkedvtr%2Fcb831c14-7671-4fbb-a352-3b242af51c38.png&w=384&q=75", link: "https://www.studysmartiaspcs.com/courses/770996?mainCategory=0&subCatList=%5B343651%5D", color: "from-emerald-500 to-teal-500" }
+    { id: "upsc-2", category: "UPSC Prelims", title: "PYQ Reverse Engineering", desc: "Master the art of decoding previous year questions to predict future exam patterns.", img: "https://courses-assets-v2.classplus.co/_next/image?url=/api/proxyimage?url=https%3A%2F%2Fcdn-wl-assets.classplus.co%2Fproduction%2Fsingle%2Fkedvtr%2F0326fec9-da8e-4e7f-b71f-6564bcae1122.png&w=384&q=75", link: "https://www.studysmartiaspcs.com/courses/770945?mainCategory=0&subCatList=%5B342039%5D", price: "₹2,999", oldPrice: "₹4,999 (Excluding GST)", badge: "Must Have" },
+    { id: "upsc-4", category: "UPSC Prelims", title: "NCERT Concept Roots", 
+    desc: "Line-by-line coverage of fundamental NCERTs to build a rock-solid base.", 
+    price: "1,111", oldPrice: "2,199 (Excluding GST)", rating: "4.8", students: "3.2k+", 
+    duration: "Foundation", badge:"Best Seller",
+    img: "https://courses-assets-v2.classplus.co/_next/image?url=/api/proxyimage?url=https%3A%2F%2Fcdn-wl-assets.classplus.co%2Fproduction%2Fsingle%2Fkedvtr%2F0fdd717f-65a9-4f92-9c22-87eb32d77a93.png&w=384&q=75", 
+    link: "https://www.studysmartiaspcs.com/courses/770972?mainCategory=0&subCatList=%5B342039%5D" },
+    { id: "uppcs-p-5", category: "UPPCS Prelims", title: "Granth 2.0", 
+    desc: "All subjects GHATNA CHAKRA & lucent coverage through tricks & nemonic for retention.", 
+    price: "2,499", oldPrice: "4,999 (Excluding GST)", rating: "4.9", students: "1.2k+", 
+    duration: "Foundation", badge:"Trending",
+    img: "https://courses-assets-v2.classplus.co/_next/image?url=/api/proxyimage?url=https%3A%2F%2Fcdn-wl-assets.classplus.co%2Fproduction%2Fsingle%2Fkedvtr%2F71d35ae1-c133-4273-9000-4fa341611bfe.png&w=384&q=75", 
+    link: "https://www.studysmartiaspcs.com/courses/770985?mainCategory=0&subCatList=%5B343651%5D" },
+    { id: "uppcs-m-1", category: "UPPCS Mains", title: "MAHAGRANTH", 
+    desc: "The definitive Mains coverage batch. Deep dive into all GS papers with blueprint techniques & tricks.", 
+    price: "3,999", oldPrice: "9,999 (Excluding GST)", rating: "4.9", students: "2.3k+", 
+    duration: "GS 1 to 6", badge: "Flagship", 
+    img: "https://courses-assets-v2.classplus.co/_next/image?url=/api/proxyimage?url=https%3A%2F%2Fcdn-wl-assets.classplus.co%2Fproduction%2Fsingle%2Fkedvtr%2F8287d028-202c-441b-990d-f49b7224190d.png&w=384&q=75", 
+    link: "https://www.studysmartiaspcs.com/courses/770999?mainCategory=0&subCatList=%5B343654%5D" },
+    { id: "uppcs-p-4", category: "UPPCS Prelims", title: "CAC 3.0", 
+    desc: "Monthly Current Affairs Compilation version 3.0 optimized for UPPCS specific events including lectures & notes.", 
+    price: "499", oldPrice: "1,499 (Excluding GST)", rating: "4.8", students: "2.8k+", 
+    duration: "Current Affairs", badge:"Best Seller",
+    img: "https://courses-assets-v2.classplus.co/_next/image?url=/api/proxyimage?url=https%3A%2F%2Fcdn-wl-assets.classplus.co%2Fproduction%2Fsingle%2Fkedvtr%2Fcb831c14-7671-4fbb-a352-3b242af51c38.png&w=384&q=75", 
+    link: "https://www.studysmartiaspcs.com/courses/770996?mainCategory=0&subCatList=%5B343651%5D" }
   ];
 
   return (
@@ -292,7 +313,7 @@ const Home = () => {
                 <FloatingElement delay={1.5}>
                   <div className="absolute -bottom-4 sm:-bottom-6 -left-2 sm:-left-4 bg-white/95 dark:bg-slate-800/95 p-2 sm:p-3 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-700 flex items-center gap-3 transform-gpu">
                     <div className="bg-gradient-to-r from-emerald-500 to-teal-500 p-1.5 sm:p-2 rounded-xl text-white shadow-md"><CheckCircle size={16} /></div>
-                    <div><p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wide">Results</p><p className="font-bold text-xs sm:text-sm text-slate-800 dark:text-white">250+ Selections</p></div>
+                    <div><p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wide">Results</p><p className="font-bold text-xs sm:text-sm text-slate-800 dark:text-white">250+ Selections in Mains</p></div>
                   </div>
                 </FloatingElement>
               </div>
@@ -403,15 +424,23 @@ const Home = () => {
                   </div>
                 </div>
                 
-                <div className="p-5 flex-1 flex flex-col justify-between">
-                  <div className="mb-4 text-center">
-                    <span className="text-[10px] font-bold text-primary uppercase tracking-wider">{course.category}</span>
-                    <h3 className="text-base md:text-lg font-bold text-slate-900 dark:text-white mt-1 line-clamp-2 leading-snug lg:group-hover:text-primary transition-colors">{course.title}</h3>
+                <div className="p-5 flex-1 flex flex-col justify-between bg-white/5 dark:bg-transparent">
+                <div className="mb-4 text-center">
+                  <span className="text-[10px] font-bold text-primary uppercase tracking-wider">{course.category}</span>
+                  <h3 className="text-base md:text-lg font-bold text-slate-900 dark:text-white mt-1 line-clamp-2 leading-snug lg:group-hover:text-primary transition-colors">{course.title}</h3>
+                </div>
+                
+                {/* --- NEW PRICING LAYOUT --- */}
+                <div className="flex items-center justify-between pt-4 border-t border-slate-200/50 dark:border-slate-700/50 mt-auto">
+                  <div className="flex flex-col text-left">
+                    <span className="text-[10px] text-slate-500 dark:text-slate-400 line-through font-semibold mb-0.5">{course.oldPrice}</span>
+                    <span className="text-lg font-black text-slate-900 dark:text-white leading-none">{course.price}</span>
                   </div>
                   
-                  <button className="w-full py-2.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-bold text-sm shadow-md lg:group-hover:bg-primary dark:lg:group-hover:bg-primary lg:group-hover:text-white transition-all flex items-center justify-center gap-2 transform-gpu mt-auto">
-                    Enroll Now <ExternalLink size={14} className="lg:group-hover:translate-x-1 lg:group-hover:-translate-y-1 transition-transform" />
+                  <button className="px-4 py-2.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-bold text-xs shadow-md lg:group-hover:bg-primary dark:lg:group-hover:bg-primary lg:group-hover:text-white transition-all flex items-center justify-center gap-1.5 transform-gpu active:scale-95">
+                    Enroll Now<ExternalLink size={12} className="lg:group-hover:translate-x-0.5 lg:group-hover:-translate-y-0.5 transition-transform" />
                   </button>
+                </div>
                 </div>
               </motion.a>
             ))}

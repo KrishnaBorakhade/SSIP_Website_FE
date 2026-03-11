@@ -81,19 +81,15 @@ const ExamPage = () => {
 
   // --- THE FIX: FORCE RELOAD ON URL CHANGE ---
   useEffect(() => {
-    // 1. Scroll to top instantly
     window.scrollTo(0, 0);
-    
-    // 2. CRITICAL FIX: Force the loading screen to appear every time the URL examName changes
     setIsPageLoading(true);
     
-    // 3. Keep the loader visible for 2.5s so the browser drops old cache and prepares new UI
     const timer = setTimeout(() => {
       setIsPageLoading(false);
     }, 2500); 
     
     return () => clearTimeout(timer);
-  }, [examName]); // <--- This dependency array tracks the URL parameter
+  }, [examName]); 
 
   // Custom function to open YouTube directly via Popup
   const handlePlaylistClick = (video) => {
@@ -126,35 +122,39 @@ const ExamPage = () => {
 
   return (
     <>
-      {/* --- MODERN FULL-SCREEN PAGE LOADER --- */}
+      {/* --- RESPONSIVE & THEME-AWARE FULL-SCREEN PAGE LOADER --- */}
       <AnimatePresence>
         {isPageLoading && (
           <motion.div
             initial={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { duration: 0.6, ease: "easeInOut" } }}
-            className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-slate-950 text-white transform-gpu overflow-hidden"
+            // FIXED: Now natively supports light mode (bg-slate-50) and dark mode (bg-slate-950)
+            className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white transform-gpu overflow-hidden"
           >
             {/* Ambient Background for Loader */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-               <motion.div animate={{ rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vh] h-[80vh] bg-[conic-gradient(from_0deg,transparent_0_340deg,rgba(59,130,246,0.3)_360deg)] rounded-full blur-3xl"></motion.div>
+            <div className="absolute inset-0 overflow-hidden pointer-events-none flex items-center justify-center">
+               <motion.div animate={{ rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }} className="w-[80vh] h-[80vh] bg-[conic-gradient(from_0deg,transparent_0_340deg,rgba(59,130,246,0.15)_360deg)] dark:bg-[conic-gradient(from_0deg,transparent_0_340deg,rgba(59,130,246,0.25)_360deg)] rounded-full blur-3xl"></motion.div>
             </div>
             
-            <div className="relative z-10 flex flex-col items-center">
-              <div className="relative w-24 h-24 mb-8 flex items-center justify-center">
+            <div className="relative z-10 flex flex-col items-center px-4 text-center">
+              <div className="relative w-20 sm:w-24 h-20 sm:h-24 mb-6 flex items-center justify-center">
                 <motion.div 
                   animate={{ rotate: 360 }} 
                   transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }} 
-                  className="absolute inset-0 border-4 border-slate-800 border-t-blue-500 border-r-purple-500 rounded-full"
+                  // FIXED: Ring border colors adapt to light/dark themes
+                  className="absolute inset-0 border-4 border-slate-200 dark:border-slate-800 border-t-blue-500 border-r-purple-500 rounded-full"
                 />
-                <Sparkles size={32} className="text-blue-400 animate-pulse" />
+                <Sparkles size={28} className="text-blue-600 dark:text-blue-400 animate-pulse sm:w-[32px] sm:h-[32px]" />
               </div>
               
-              <h2 className="text-2xl md:text-3xl font-black mb-3 tracking-tight">Loading Exam Vault</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black mb-6 tracking-tight">Loading Exam Vault</h2>
               
-              <div className="bg-slate-900/80 border border-slate-800 px-5 py-2.5 rounded-xl flex items-center gap-3 shadow-lg">
-                 <Loader2 size={16} className="animate-spin text-purple-400" />
-                 <p className="text-slate-400 text-sm font-medium tracking-wide">
-                   Please wait a moment while we prepare the best playlists for your {currentExam.title} journey.
+              {/* FIXED: Highly responsive, elegant, theme-aware Pro Tip box */}
+              <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-800 px-4 sm:px-6 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl flex flex-col sm:flex-row items-center gap-2 sm:gap-3 shadow-lg max-w-[90vw]">
+                 <Loader2 size={18} className="animate-spin text-purple-600 dark:text-purple-400 shrink-0 hidden sm:block" />
+                 <p className="text-slate-600 dark:text-slate-400 text-[11px] sm:text-sm font-medium tracking-wide">
+                   <span className="font-bold text-slate-900 dark:text-white block sm:inline mb-0.5 sm:mb-0">Pro Tip: </span>
+                   Please wait a moment while we fetch the latest playlists for your exam.
                  </p>
               </div>
             </div>
@@ -194,7 +194,6 @@ const ExamPage = () => {
           {/* --- MATRIX GRID COMPONENT --- */}
           {!isPageLoading && (
             <motion.div 
-              // CRITICAL FIX: This key forces React to physically destroy and recreate the grid when you switch exams!
               key={examName} 
               variants={staggerContainer}
               initial="hidden"
@@ -218,7 +217,6 @@ const ExamPage = () => {
                     <div className="relative h-52 sm:h-60 overflow-hidden p-2 shrink-0 bg-slate-100 dark:bg-slate-800">
                       <div className="w-full h-full rounded-[1.5rem] overflow-hidden relative bg-black flex items-center justify-center">
                           
-                          {/* PERFORMANCE FIX: Render custom Lazy Iframe */}
                           <LazyIframe embedUrl={video.embed} title={video.title} isPageLoading={isPageLoading} />
                           
                           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/30 to-transparent pointer-events-none"></div>
