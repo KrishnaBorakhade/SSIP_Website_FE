@@ -373,7 +373,7 @@ const CourseRow = ({ title, courses }) => {
   return (
     <div className="mb-12 md:mb-16 relative">
       
-      {/* Title & Badge */}
+      {/* Title & Controls */}
       <div className="flex items-center justify-between mb-4 md:mb-6 px-4 sm:px-6 lg:px-10 gap-4">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 dark:text-white flex items-center gap-3 md:gap-4 tracking-tight relative z-10">
           <span className="w-1.5 md:w-2 h-8 md:h-10 bg-gradient-to-b from-blue-600 to-purple-600 rounded-full shrink-0"></span>
@@ -385,7 +385,15 @@ const CourseRow = ({ title, courses }) => {
           </div>
         </h2>
         
-        {/* Mobile swipe indicator */}
+        <div className="hidden md:flex gap-3 shrink-0 relative z-10">
+          <button onClick={() => slide('left')} className="p-2.5 md:p-3 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 transition shadow-sm hover:scale-110 active:scale-95 transform-gpu">
+            <ChevronLeft size={20} className="md:w-6 md:h-6" />
+          </button>
+          <button onClick={() => slide('right')} className="p-2.5 md:p-3 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 transition shadow-sm hover:scale-110 active:scale-95 transform-gpu">
+            <ChevronRight size={20} className="md:w-6 md:h-6" />
+          </button>
+        </div>
+
         <div className="md:hidden flex items-center shrink-0 relative z-10">
           <motion.div animate={{ x: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }} className="flex items-center gap-1.5 text-primary font-bold text-[11px] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-3 py-1.5 rounded-full shadow-sm">
             Swipe <ArrowRight size={12} strokeWidth={3} />
@@ -393,25 +401,8 @@ const CourseRow = ({ title, courses }) => {
         </div>
       </div>
 
-      {/* Slider Container with Centered Edge Arrows */}
-      <div className="relative w-full py-4 group/slider">
+      <div className="relative w-full py-4">
         
-        {/* --- FLOATING LEFT/RIGHT ARROWS --- */}
-        <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between z-30 pointer-events-none opacity-0 md:group-hover/slider:opacity-100 transition-opacity duration-300 px-2 lg:px-6">
-          <button 
-            onClick={() => slide('left')} 
-            className="pointer-events-auto p-3 rounded-full bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 shadow-xl hover:scale-110 active:scale-95 transition-all transform-gpu"
-          >
-            <ChevronLeft size={24} />
-          </button>
-          <button 
-            onClick={() => slide('right')} 
-            className="pointer-events-auto p-3 rounded-full bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 shadow-xl hover:scale-110 active:scale-95 transition-all transform-gpu"
-          >
-            <ChevronRight size={24} />
-          </button>
-        </div>
-
         <div ref={sliderRef} className="flex items-stretch overflow-x-auto snap-x snap-mandatory gap-6 sm:gap-8 pb-10 pt-4 px-4 sm:px-6 lg:px-10 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] scroll-smooth w-full relative z-20">
           {courses.map((course, idx) => (
             <CourseCard key={course.id} course={course} index={idx} />
