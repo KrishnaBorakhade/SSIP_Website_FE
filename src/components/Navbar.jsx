@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   Menu, X, Sun, Moon,
-  ChevronDown, BookOpen, Target, Award, User
+  ChevronDown, BookOpen, Target, Award, User, MapPin, Compass, BrainCircuit
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -22,10 +22,13 @@ const Navbar = ({ theme, toggleTheme }) => {
   const sentence = "STUDY SMART IAS PCS";
   const letter = { hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } };
 
+  // --- EXAM STREAMS ARRAY ---
   const examStreams = [
     { id: 'UPSC', link: '/exams/upsc', icon: <BookOpen size={18} />, desc: "Union Public Service Commission" },
     { id: 'UPPCS', link: '/exams/uppcs', icon: <Target size={18} />, desc: "Uttar Pradesh Provincial Civil Services" },
     { id: 'CSAT', link: '/exams/csat', icon: <Award size={18} />, desc: "Civil Services Aptitude Test" },
+    { id: 'BPSC', link: '/exams/bpsc', icon: <MapPin size={18} />, desc: "Bihar Public Service Commission" },
+    { id: 'MPPSC', link: '/exams/mppsc', icon: <Compass size={18} />, desc: "Madhya Pradesh Public Service Commission" },
   ];
 
   return (
@@ -50,6 +53,7 @@ const Navbar = ({ theme, toggleTheme }) => {
             <Link to="/" className="flex items-center gap-3 order-2 lg:order-1 group min-w-0">
               <img 
                 src="/logo.png"
+                alt="Study Smart Logo"
                 className="h-8 md:h-10 w-auto object-contain group-hover:scale-105 transition-transform rounded-full" 
               />
               <motion.h1
@@ -62,10 +66,10 @@ const Navbar = ({ theme, toggleTheme }) => {
               </motion.h1>
             </Link>
 
-            {/* Desktop Links (Home, Courses, Exams, About Us) */}
-            <div className="hidden lg:flex order-2 flex-1 justify-center items-center space-x-2 font-medium text-slate-600 dark:text-slate-300">
-              <Link to="/" className={`px-4 py-2 rounded-xl hover:text-primary dark:hover:text-white transition ${location.pathname === '/' ? 'text-primary font-bold' : ''}`}>Home</Link>
-              <Link to="/courses" className={`px-4 py-2 rounded-xl hover:text-primary dark:hover:text-white transition ${location.pathname === '/courses' ? 'text-primary font-bold' : ''}`}>Courses</Link>
+            {/* Desktop Links */}
+            <div className="hidden lg:flex order-2 flex-1 justify-center items-center space-x-1 lg:space-x-2 font-medium text-slate-600 dark:text-slate-300 text-sm lg:text-base">
+              <Link to="/" className={`px-3 py-2 rounded-xl hover:text-primary dark:hover:text-white transition ${location.pathname === '/' ? 'text-primary font-bold' : ''}`}>Home</Link>
+              <Link to="/courses" className={`px-3 py-2 rounded-xl hover:text-primary dark:hover:text-white transition ${location.pathname === '/courses' ? 'text-primary font-bold' : ''}`}>Courses</Link>
               
               {/* Exams Mega Menu */}
               <div className="relative group px-2 py-2" onMouseEnter={() => setIsExamHovered(true)} onMouseLeave={() => setIsExamHovered(false)}>
@@ -94,7 +98,12 @@ const Navbar = ({ theme, toggleTheme }) => {
                 </AnimatePresence>
               </div>
 
-              <Link to="/about" className={`px-4 py-2 rounded-xl hover:text-primary dark:hover:text-white transition ${location.pathname === '/about' ? 'text-primary font-bold' : ''}`}>About Us</Link>
+              <Link to="/about" className={`px-3 py-2 rounded-xl hover:text-primary dark:hover:text-white transition ${location.pathname === '/about' ? 'text-primary font-bold' : ''}`}>About Us</Link>
+
+              {/* RE-POSITIONED QUIZ LINK (Now at the end) */}
+              <Link to="/quiz" className={`px-3 py-2 rounded-xl hover:text-primary dark:hover:text-white transition flex items-center gap-1.5 ${location.pathname.includes('/quiz') ? 'text-primary font-bold' : ''}`}>
+                <BrainCircuit size={16} className={`${location.pathname.includes('/quiz') ? 'text-primary' : 'text-purple-500'}`} /> Quiz
+              </Link>
             </div>
 
             {/* Right Side Tools */}
@@ -104,7 +113,7 @@ const Navbar = ({ theme, toggleTheme }) => {
                 {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
               </button>
 
-              {/* Login Button (Theme Responsive) */}
+              {/* Login Button */}
               <a 
                 href="https://web.classplusapp.com/login?orgCode=kedvtr" 
                 target="_blank" 
@@ -125,12 +134,19 @@ const Navbar = ({ theme, toggleTheme }) => {
           <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="fixed top-20 left-4 right-4 z-40 bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200 lg:hidden p-5 flex flex-col space-y-2 font-medium">
             <MobileLink to="/" onClick={() => setIsOpen(false)}>Home</MobileLink>
             <MobileLink to="/courses" onClick={() => setIsOpen(false)}>Courses</MobileLink>
+            
             <div className="py-2 px-4"><p className="text-xs font-bold text-slate-400 uppercase mb-2">Exams</p>
               <div className="flex flex-col gap-2">
                  {examStreams.map(e => <Link key={e.id} to={e.link} onClick={() => setIsOpen(false)} className="text-primary font-bold bg-primary/10 p-2 rounded-lg text-sm">{e.id} Playlists</Link>)}
               </div>
             </div>
+            
             <MobileLink to="/about" onClick={() => setIsOpen(false)}>About Us</MobileLink>
+
+            {/* QUIZ LINK MOBILE */}
+            <Link to="/quiz" onClick={() => setIsOpen(false)} className="px-4 py-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition font-bold text-slate-700 dark:text-slate-200 flex items-center gap-2">
+              <BrainCircuit size={18} className="text-purple-500"/> Daily Quiz
+            </Link>
             
             {/* Mobile Login Button */}
             <a 

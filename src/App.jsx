@@ -9,6 +9,8 @@ import About from './pages/About';
 import Tests from './pages/Tests';
 import CurrentAffairs from './pages/CurrentAffairs';
 import ExamPage from './pages/ExamPage';
+import QuizAttempt from './pages/QuizAttempt'; // Your actual 10-question quiz
+import QuizPage from './pages/QuizPage';       // Your quiz listing page
 
 function App() {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
@@ -37,6 +39,11 @@ function App() {
           <Route path="/tests" element={<Tests />} />
           <Route path="/current-affairs" element={<CurrentAffairs />} />
           <Route path="/exams/:examName" element={<ExamPage />} />
+          
+          {/* --- FIXED QUIZ ROUTES --- */}
+          <Route path="/quiz" element={<QuizPage />} /> 
+          <Route path="/quiz/attempt" element={<QuizAttempt />} /> 
+          
         </Routes>
         <ChatBot />
         <Footer />

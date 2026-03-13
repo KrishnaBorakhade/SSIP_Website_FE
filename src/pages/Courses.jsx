@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import {
   ArrowRight, Star, PlayCircle, Users,
   Flame, ShieldCheck, Clock, AlertCircle, Lock, Calendar,
-  ExternalLink, ChevronRight, ChevronLeft, Sparkles
+  ExternalLink, ChevronRight, ChevronLeft, Sparkles, Send
 } from 'lucide-react';
 
 // --- MENTORSHIP LOCAL IMAGES ---
@@ -43,34 +43,34 @@ const allCourses = [
    { 
     id: "upsc-2", category: "UPSC Prelims", title: "PYQ Reverse Engineering", 
     desc: "Master the art of decoding previous year questions to predict future exam patterns.", 
-    price: "2,999", oldPrice: "4,999 (Excluding GST)", rating: "4.8", students: "1.8k+", 
+    price: "2,999", oldPrice: "4,999", rating: "4.8", students: "1.8k+", 
     duration: "Self Paced", badge:"Must Have",
     img: "https://courses-assets-v2.classplus.co/_next/image?url=/api/proxyimage?url=https%3A%2F%2Fcdn-wl-assets.classplus.co%2Fproduction%2Fsingle%2Fkedvtr%2F0326fec9-da8e-4e7f-b71f-6564bcae1122.png&w=384&q=75", 
-    link: "https://www.studysmartiaspcs.com/courses/770945?mainCategory=0&subCatList=%5B342039%5D" 
+    link: "https://www.ssip.cloud/courses/770945?filterId=1&sortId=7" 
   },
   { 
     id: "upsc-4", category: "UPSC Prelims", title: "NCERT Concept Roots", 
     desc: "Line-by-line coverage of fundamental NCERTs to build a rock-solid base.", 
-    price: "1,111", oldPrice: "2,199 (Excluding GST)", rating: "4.8", students: "3.2k+", 
+    price: "1,111", oldPrice: "2,199", rating: "4.8", students: "3.2k+", 
     duration: "Foundation", badge:"Best Seller",
     img: "https://courses-assets-v2.classplus.co/_next/image?url=/api/proxyimage?url=https%3A%2F%2Fcdn-wl-assets.classplus.co%2Fproduction%2Fsingle%2Fkedvtr%2F0fdd717f-65a9-4f92-9c22-87eb32d77a93.png&w=384&q=75", 
-    link: "https://www.studysmartiaspcs.com/courses/770972?mainCategory=0&subCatList=%5B342039%5D" 
+    link: "https://www.ssip.cloud/courses/770972?filterId=1&sortId=7" 
   },
   { 
     id: "upsc-1", category: "UPSC Prelims", title: "Rapid Revision Course (VOD) for UPSC 2026", 
     desc: "Complete video-on-demand rapid revision covering all essential UPSC Prelims topics.", 
-    price: "1,499", oldPrice: "2,999 (Excluding GST)", rating: "4.9", students: "2.5k+", 
+    price: "1,499", oldPrice: "2,999", rating: "4.9", students: "2.5k+", 
     duration: "VOD", 
     img: "https://courses-assets-v2.classplus.co/_next/image?url=/api/proxyimage?url=https%3A%2F%2Fcdn-wl-assets.classplus.co%2Fproduction%2Fsingle%2Fkedvtr%2F755b4d87-3f94-4b39-a38a-5a83026913c9.png&w=384&q=75", 
-    link: "https://www.studysmartiaspcs.com/courses/770966?mainCategory=0&subCatList=%5B342039%5D" 
+    link: "https://www.ssip.cloud/courses/770966?filterId=1&sortId=7" 
   },
   { 
     id: "upsc-3", category: "UPSC Prelims", title: "General Studies Magazine", 
     desc: "Comprehensive syllabus coverage with crisp notes in a magazine format.", 
-    price: "499", oldPrice: "1,499 (Excluding GST)", rating: "4.9", students: "4k+", 
+    price: "499", oldPrice: "1,499", rating: "4.9", students: "4k+", 
     duration: "VOD", 
     img: "https://courses-assets-v2.classplus.co/_next/image?url=/api/proxyimage?url=https%3A%2F%2Fcdn-wl-assets.classplus.co%2Fproduction%2Fsingle%2Fkedvtr%2Fd2f01b59-22e6-463d-b638-ceda63b2ee9b.png&w=384&q=75", 
-    link: "https://www.studysmartiaspcs.com/courses/770970?mainCategory=0&subCatList=%5B342039%5D" 
+    link: "https://www.ssip.cloud/courses/770970?filterId=1&sortId=7" 
   },
   
   // ==========================================
@@ -79,34 +79,34 @@ const allCourses = [
   { 
     id: "uppcs-p-5", category: "UPPCS Prelims", title: "Granth 2.0", 
     desc: "All subjects GHATNA CHAKRA & lucent coverage through tricks & nemonic for retention.", 
-    price: "2,499", oldPrice: "4,999 (Excluding GST)", rating: "4.9", students: "1.2k+", 
+    price: "2,499", oldPrice: "4,999", rating: "4.9", students: "1.2k+", 
     duration: "Foundation", badge:"Trending",
     img: "https://courses-assets-v2.classplus.co/_next/image?url=/api/proxyimage?url=https%3A%2F%2Fcdn-wl-assets.classplus.co%2Fproduction%2Fsingle%2Fkedvtr%2F71d35ae1-c133-4273-9000-4fa341611bfe.png&w=384&q=75", 
-    link: "https://www.studysmartiaspcs.com/courses/770985?mainCategory=0&subCatList=%5B343651%5D" 
+    link: "https://www.ssip.cloud/courses/770985?filterId=1&sortId=7" 
   },
   { 
     id: "uppcs-p-4", category: "UPPCS Prelims", title: "CAC 3.0", 
     desc: "Monthly Current Affairs Compilation version 3.0 optimized for UPPCS specific events including lectures & notes.", 
-    price: "499", oldPrice: "1,499 (Excluding GST)", rating: "4.8", students: "2.8k+", 
+    price: "499", oldPrice: "1,499", rating: "4.8", students: "2.8k+", 
     duration: "Current Affairs", badge:"Best Seller",
     img: "https://courses-assets-v2.classplus.co/_next/image?url=/api/proxyimage?url=https%3A%2F%2Fcdn-wl-assets.classplus.co%2Fproduction%2Fsingle%2Fkedvtr%2Fcb831c14-7671-4fbb-a352-3b242af51c38.png&w=384&q=75", 
-    link: "https://www.studysmartiaspcs.com/courses/770996?mainCategory=0&subCatList=%5B343651%5D" 
+    link: "https://www.ssip.cloud/courses/770996?filterId=1&sortId=7" 
   },
   { 
     id: "uppcs-p-3", category: "UPPCS Prelims", title: "Score Boosters", 
     desc: "High-yield topics and short tricks to instantly elevate your Prelims score of all subjects (UP SPECIAL).", 
-    price: "499", oldPrice: "1,999 (Excluding GST)", rating: "4.7", students: "3.5k+", 
+    price: "499", oldPrice: "1,999", rating: "4.7", students: "3.5k+", 
     duration: "MAGZINE", badge:"Must Have",
     img: "https://courses-assets-v2.classplus.co/_next/image?url=/api/proxyimage?url=https%3A%2F%2Fcdn-wl-assets.classplus.co%2Fproduction%2Fsingle%2Fkedvtr%2F1dbb3067-9350-4dc0-99b6-cdd02533ffb3.png&w=384&q=75", 
-    link: "https://www.studysmartiaspcs.com/courses/770990?mainCategory=0&subCatList=%5B343651%5D" 
+    link: "https://www.ssip.cloud/courses/770990?filterId=1&sortId=7" 
   },
   { 
     id: "uppcs-p-2", category: "UPPCS Prelims", title: "GRANTH (GHATNA CHAKRA)", 
     desc: "The ultimate preparatory material tailored for UPPCS 2025 Prelims.", 
-    price: "1,499", oldPrice: "4,999 (Excluding GST)", rating: "4.9", students: "5k+", 
+    price: "1,499", oldPrice: "4,999", rating: "4.9", students: "5k+", 
     duration: "VOD", 
     img: "https://courses-assets-v2.classplus.co/_next/image?url=/api/proxyimage?url=https%3A%2F%2Fcdn-wl-assets.classplus.co%2Fproduction%2Fsingle%2Fkedvtr%2F9bade139-7424-4543-946d-4ba4b105487f.png&w=384&q=75", 
-    link: "https://www.studysmartiaspcs.com/courses/721212?mainCategory=0&subCatList=%5B343651%5D" 
+    link: "https://www.ssip.cloud/courses/721212?filterId=1&sortId=7" 
   },
 
   // ==========================================
@@ -115,42 +115,42 @@ const allCourses = [
   { 
     id: "uppcs-m-1", category: "UPPCS Mains", title: "MAHAGRANTH", 
     desc: "The definitive Mains coverage batch. Deep dive into all GS papers with blueprint techniques & tricks.", 
-    price: "3,999", oldPrice: "9,999 (Excluding GST)", rating: "4.9", students: "2.3k+", 
+    price: "3,999", oldPrice: "9,999", rating: "4.9", students: "2.3k+", 
     duration: "GS 1 to 6", badge: "Flagship", 
     img: "https://courses-assets-v2.classplus.co/_next/image?url=/api/proxyimage?url=https%3A%2F%2Fcdn-wl-assets.classplus.co%2Fproduction%2Fsingle%2Fkedvtr%2F8287d028-202c-441b-990d-f49b7224190d.png&w=384&q=75", 
-    link: "https://www.studysmartiaspcs.com/courses/770999?mainCategory=0&subCatList=%5B343654%5D" 
+    link: "https://www.ssip.cloud/courses/770999?filterId=1&sortId=7" 
   },
   { 
     id: "uppcs-m-2", category: "UPPCS Mains", title: "GS 5&6 - UP Special", 
     desc: "Exhaustive coverage of newly added UP Special Papers 5 and 6.", 
-    price: "999", oldPrice: "2,499 (Excluding GST)", rating: "4.8", students: "3.1k+", 
+    price: "999", oldPrice: "2,499", rating: "4.8", students: "3.1k+", 
     duration: "Thematic Coverage", 
     img: "https://courses-assets-v2.classplus.co/_next/image?url=/api/proxyimage?url=https%3A%2F%2Fcdn-wl-assets.classplus.co%2Fproduction%2Fsingle%2Fkedvtr%2F901d2ccf-26af-4895-b558-9a08c59b9c92.png&w=384&q=75", 
-    link: "https://www.studysmartiaspcs.com/courses/771002?mainCategory=0&subCatList=%5B343654%5D" 
+    link: "https://www.ssip.cloud/courses/771002?filterId=1&sortId=7" 
   },
   { 
     id: "uppcs-m-3", category: "UPPCS Mains", title: "ESSAY FOR UPPCS AND UPSC", 
     desc: "Real-life case studies, philosophical essay decoding, and high-scoring structures.", 
-    price: "999", oldPrice: "2,999 (Exlcluding GST)", rating: "4.9", students: "1.5k+", 
+    price: "999", oldPrice: "2,999", rating: "4.9", students: "1.5k+", 
     duration: "Mains Focus", 
     img: "https://courses-assets-v2.classplus.co/_next/image?url=/api/proxyimage?url=https%3A%2F%2Fcdn-wl-assets.classplus.co%2Fproduction%2Fsingle%2Fkedvtr%2Ff0be90a3-2c07-4cb0-a962-a0feb1f1bf2c.png&w=384&q=75", 
-    link: "https://www.studysmartiaspcs.com/courses/804293?filterId=1&sortId=7" 
+    link: "https://www.ssip.cloud/courses/804293?filterId=1&sortId=7" 
   },
   { 
     id: "uppcs-m-4", category: "UPPCS Mains", title: "सामान्य हिंदी - UPPCS MAINS", 
     desc: "Compulsory Hindi paper mastery with Crips Notes.", 
-    price: "999", oldPrice: "2,999 (Excluding GST)", rating: "4.9", students: "1.5k+", 
+    price: "999", oldPrice: "2,999", rating: "4.9", students: "1.5k+", 
     duration: "Mains Focus", 
     img: "https://courses-assets-v2.classplus.co/_next/image?url=/api/proxyimage?url=https%3A%2F%2Fcdn-wl-assets.classplus.co%2Fproduction%2Fsingle%2Fkedvtr%2F2254dbc7-e4ab-4086-911b-47946ff6d6b3.png&w=384&q=75", 
-    link: "https://www.studysmartiaspcs.com/courses/771006?filterId=1&sortId=7" 
+    link: "https://www.ssip.cloud/courses/771006?filterId=1&sortId=7" 
   },
   { 
     id: "uppcs-m-5", category: "UPPCS Mains", title: "CAC Mains", 
     desc: "One Year compilation in answer writing format.", 
-    price: "499", oldPrice: "1,499 (Excluding GST)", rating: "4.9", students: "1.5k+", 
+    price: "499", oldPrice: "1,499", rating: "4.9", students: "1.5k+", 
     duration: "Mains Focus", 
     img: "https://courses-assets-v2.classplus.co/_next/image?url=/api/proxyimage?url=https%3A%2F%2Fcdn-wl-assets.classplus.co%2Fproduction%2Fsingle%2Fkedvtr%2F1ceee6b1-5d49-47ee-86a2-0499bee97ced.png&w=384&q=75", 
-    link: "https://www.studysmartiaspcs.com/courses/771012?filterId=1&sortId=7" 
+    link: "https://www.ssip.cloud/courses/771012?filterId=1&sortId=7" 
   },
 
   // ==========================================
@@ -203,10 +203,32 @@ const allCourses = [
     price: "₹9,999", oldPrice: "₹14,000", rating: "5.0", students: "Full", 
     duration: "1 Year", startDate: "08-12-2025", isClosed: true, 
     img: mentorImg6 
+  },
+
+  /* // ==========================================
+  // UNCOMMENT THESE WHEN READY TO LAUNCH
+  // ==========================================
+  { 
+    id: "bpsc-1", category: "BPSC", title: "BPSC Prelims Foundation", 
+    desc: "Complete syllabus coverage for BPSC with state-specific focus.", 
+    price: "₹2,499", oldPrice: "₹4,999", rating: "New", students: "Filling Fast", 
+    duration: "Foundation", badge: "Coming Soon", isClosed: false, 
+    img: "PLACEHOLDER_IMAGE_URL",
+    link: "#" 
+  },
+  { 
+    id: "mppsc-1", category: "MPPSC", title: "MPPSC Prelims & Mains", 
+    desc: "Integrated MPPSC preparation with answer writing modules.", 
+    price: "₹3,499", oldPrice: "₹6,999", rating: "New", students: "Filling Fast", 
+    duration: "Foundation", badge: "Coming Soon", isClosed: false, 
+    img: "PLACEHOLDER_IMAGE_URL",
+    link: "#" 
   }
+  */
 ];
 
-const categories = ["All", "UPSC Prelims", "UPPCS Prelims", "UPPCS Mains", "Mentorship"];
+// --- UPDATED CATEGORIES ---
+const categories = ["All", "UPSC Prelims", "UPPCS Prelims", "UPPCS Mains", "Mentorship", "BPSC", "MPPSC"];
 
 const preloadImages = () => {
   const imagesToPreload = allCourses.slice(0, 6).map(course => course.img);
@@ -216,12 +238,33 @@ const preloadImages = () => {
   });
 };
 
+// --- SAFELY RENDERED COMING SOON PLACEHOLDER ---
+const ComingSoonPlaceholder = ({ title }) => (
+  <motion.div 
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    className="w-full py-20 flex flex-col items-center justify-center bg-white/50 dark:bg-slate-900/50 backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-[2rem] shadow-sm text-center"
+  >
+    <div className="w-16 h-16 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center mb-4 border border-blue-100 dark:border-blue-800">
+      <Clock size={32} />
+    </div>
+    <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-2 tracking-tight">{title} Courses Launching Soon</h3>
+    <p className="text-slate-500 dark:text-slate-400 max-w-md mx-auto">We are carefully crafting the best study material and lectures for this exam. Stay tuned to our Telegram channel for the launch announcement!</p>
+    <a href="https://t.me/StudySmartIASPCS" target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 px-6 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-bold text-sm shadow-md hover:scale-105 transition-transform transform-gpu">
+      <Send size={16} /> Join Telegram for Updates
+    </a>
+  </motion.div>
+);
+
 // --- PREMIUM COURSE CARD COMPONENT ---
 const CourseCard = ({ course, index }) => {
   const CardWrapper = course.isClosed ? 'div' : 'a';
   const wrapperProps = course.isClosed 
     ? {} 
     : { href: course.link, target: "_blank", rel: "noopener noreferrer" };
+
+  // Safely extract price to prevent .includes() crash on undefined
+  const priceDisplay = course.price ? (String(course.price).includes('₹') ? course.price : `₹${course.price}`) : 'Free';
 
   return (
     <motion.div
@@ -231,12 +274,10 @@ const CourseCard = ({ course, index }) => {
       transition={{ duration: 0.4 }}
       className={`snap-start shrink-0 w-[85vw] sm:w-[350px] md:w-[400px] lg:w-[420px] relative group flex flex-col outline-none ${course.isClosed ? 'opacity-80' : ''}`}
     >
-      {/* 1. THE GLOWING GLASS HOVER EFFECT (Behind the card) */}
       {!course.isClosed && (
         <div className="absolute -inset-[2px] bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 rounded-[2.2rem] opacity-0 group-hover:opacity-100 blur-sm md:blur-md transition-all duration-500 -z-10 group-hover:animate-pulse"></div>
       )}
 
-      {/* 2. THE CARD (Turns to frosted glass on hover to let the glow shine through) */}
       <CardWrapper 
         {...wrapperProps} 
         className="flex-1 flex flex-col bg-white dark:bg-slate-900 group-hover:bg-white/80 dark:group-hover:bg-slate-900/80 backdrop-blur-2xl border border-slate-200 dark:border-slate-800 group-hover:border-white/50 dark:group-hover:border-slate-700/50 rounded-[2rem] overflow-hidden shadow-lg group-hover:shadow-2xl transition-all duration-300 md:group-hover:-translate-y-1 m-[1px]"
@@ -248,7 +289,6 @@ const CourseCard = ({ course, index }) => {
           </div>
         )}
 
-        {/* 👇 IMAGE BOX SIZE CONTROL: Change h-52 sm:h-60 to adjust height */}
         <div className="relative h-52 sm:h-60 overflow-hidden bg-slate-100 dark:bg-slate-800 p-2 shrink-0">
            <div className="w-full h-full rounded-[1.5rem] overflow-hidden relative">
               <img 
@@ -293,7 +333,7 @@ const CourseCard = ({ course, index }) => {
            <div className="flex items-center justify-between pt-4 sm:pt-5 border-t border-slate-100 dark:border-slate-800/50 mt-auto">
               <div className="flex flex-col">
                 <span className="text-[10px] sm:text-xs text-slate-400 line-through font-semibold mb-0.5">{course.oldPrice}</span>
-                <span className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white leading-none">{course.price}</span>
+                <span className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white leading-none">{priceDisplay}</span>
               </div>
               
               {course.isClosed ? (
@@ -323,12 +363,17 @@ const CourseRow = ({ title, courses }) => {
     }
   };
 
-  if (courses.length === 0) return null;
+  // Safe Guard: Check if the category is empty. Display coming soon placeholder for BPSC/MPPSC.
+  if (!courses || courses.length === 0) {
+    if (title && title.includes("BPSC")) return <ComingSoonPlaceholder title="BPSC" />;
+    if (title && title.includes("MPPSC")) return <ComingSoonPlaceholder title="MPPSC" />;
+    return null;
+  }
 
   return (
     <div className="mb-12 md:mb-16 relative">
       
-      {/* Title & Controls */}
+      {/* Title & Badge ONLY (Removed the top-right arrows from here) */}
       <div className="flex items-center justify-between mb-4 md:mb-6 px-4 sm:px-6 lg:px-10 gap-4">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 dark:text-white flex items-center gap-3 md:gap-4 tracking-tight relative z-10">
           <span className="w-1.5 md:w-2 h-8 md:h-10 bg-gradient-to-b from-blue-600 to-purple-600 rounded-full shrink-0"></span>
@@ -339,16 +384,8 @@ const CourseRow = ({ title, courses }) => {
             </span>
           </div>
         </h2>
-        
-        <div className="hidden md:flex gap-3 shrink-0 relative z-10">
-          <button onClick={() => slide('left')} className="p-2.5 md:p-3 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 transition shadow-sm hover:scale-110 active:scale-95 transform-gpu">
-            <ChevronLeft size={20} className="md:w-6 md:h-6" />
-          </button>
-          <button onClick={() => slide('right')} className="p-2.5 md:p-3 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 transition shadow-sm hover:scale-110 active:scale-95 transform-gpu">
-            <ChevronRight size={20} className="md:w-6 md:h-6" />
-          </button>
-        </div>
 
+        {/* Mobile swipe indicator */}
         <div className="md:hidden flex items-center shrink-0 relative z-10">
           <motion.div animate={{ x: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }} className="flex items-center gap-1.5 text-primary font-bold text-[11px] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-3 py-1.5 rounded-full shadow-sm">
             Swipe <ArrowRight size={12} strokeWidth={3} />
@@ -356,15 +393,27 @@ const CourseRow = ({ title, courses }) => {
         </div>
       </div>
 
-      {/* ====================================================================
-        👇 START: SLIDER CONTAINER BACKGROUND 👇
-        Update or remove the background styling of the card slider here. 
-        Currently set to a clean, transparent layout as requested.
-        ==================================================================== 
-      */}
-      <div className="relative w-full py-4">
+      {/* --- Slider Container with Floating Edge Arrows --- */}
+      <div className="relative w-full py-4 group/slider">
         
-        <div ref={sliderRef} className="flex items-stretch overflow-x-auto snap-x snap-mandatory gap-6 sm:gap-8 pb-10 pt-4 px-4 sm:px-6 lg:px-10 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] scroll-smooth w-full relative z-20">
+        {/* The completely pushed out floating arrows */}
+        <div className="absolute top-1/2 -translate-y-1/2 -left-2 md:-left-6 lg:-left-8 -right-2 md:-right-6 lg:-right-8 flex justify-between z-30 pointer-events-none opacity-0 md:group-hover/slider:opacity-100 transition-opacity duration-300">
+          <button 
+            onClick={() => slide('left')} 
+            className="pointer-events-auto p-3 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:scale-110 active:scale-95 transition-all transform-gpu"
+          >
+            <ChevronLeft size={24} />
+          </button>
+          <button 
+            onClick={() => slide('right')} 
+            className="pointer-events-auto p-3 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:scale-110 active:scale-95 transition-all transform-gpu"
+          >
+            <ChevronRight size={24} />
+          </button>
+        </div>
+
+        {/* Track with increased inner padding so cards don't hit the arrows */}
+        <div ref={sliderRef} className="flex items-stretch overflow-x-auto snap-x snap-mandatory gap-6 sm:gap-8 pb-10 pt-4 px-4 md:px-12 lg:px-14 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] scroll-smooth w-full relative z-20">
           {courses.map((course, idx) => (
             <CourseCard key={course.id} course={course} index={idx} />
           ))}
@@ -372,10 +421,6 @@ const CourseRow = ({ title, courses }) => {
         </div>
         
       </div>
-      {/* ====================================================================
-        👆 END: SLIDER CONTAINER BACKGROUND 👆
-        ==================================================================== 
-      */}
 
     </div>
   );
