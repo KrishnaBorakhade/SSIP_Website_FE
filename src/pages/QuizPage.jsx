@@ -24,7 +24,6 @@ export default function QuizPage() {
   }, []);
 
   return (
-    // FIXED: Increased pt-32 md:pt-40 to prevent overlapping with the fixed Navbar
     <div className="min-h-screen pt-32 md:pt-40 pb-20 bg-slate-50 dark:bg-slate-950 font-sans relative overflow-hidden w-full flex flex-col items-center justify-center">
       
       {/* --- AMBIENT BACKGROUND --- */}
@@ -77,7 +76,7 @@ export default function QuizPage() {
             </motion.div>
           </div>
 
-          {/* Text Content - FIXED FONT SIZES */}
+          {/* Text Content */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-4 tracking-tighter leading-tight relative z-10">
             Coming <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Soon</span>
           </h1>
@@ -88,8 +87,9 @@ export default function QuizPage() {
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 justify-center items-center relative z-10">
+            {/* --- UPDATED TELEGRAM LINK HERE --- */}
             <a 
-              href="https://t.me/StudySmartIASPCS" 
+              href="https://t.me/+U98qAhiBLLg3ZWRl" 
               target="_blank" 
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-6 py-3.5 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl font-bold shadow-[0_8px_20px_rgba(124,58,237,0.25)] hover:shadow-[0_8px_25px_rgba(124,58,237,0.4)] transition-all flex items-center justify-center gap-2 transform-gpu active:scale-95 text-xs sm:text-sm"
