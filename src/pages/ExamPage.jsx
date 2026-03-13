@@ -44,6 +44,25 @@ export const examPlaylists = {
       { id: "csat-2", title: "CSAT - UPSC Prelims 2026", embed: "https://www.youtube.com/embed/videoseries?list=PLt-EyYJP3Q8Z1M-hFX4pQTq4YGYr4PJFu", listId: "PLt-EyYJP3Q8Z1M-hFX4pQTq4YGYr4PJFu", lessons: 28, rating: "4.8" },
       { id: "csat-3", title: "Reading Comprehension Algo - UPSC CSAT 2026", embed: "https://www.youtube.com/embed/videoseries?list=PLt-EyYJP3Q8aQ5nzsTxKqQOSoEzjzbWx3", listId: "PLt-EyYJP3Q8aQ5nzsTxKqQOSoEzjzbWx3", lessons: 20, rating: "4.7" },
     ]
+  },
+  // --- NEW: BPSC EXAM DATA ---
+  bpsc: {
+    title: "BPSC Specialized",
+    description: "Expertly curated preparation material for the Bihar Public Service Commission.",
+    videos: [
+      { id: "bpsc-1", title: "Sureshot Series BPSC", embed: "https://www.youtube.com/embed/videoseries?list=PLt-EyYJP3Q8aGTPeI2LuhfaTf7kgNiCZb", listId: "PLt-EyYJP3Q8aGTPeI2LuhfaTf7kgNiCZb", lessons: 12, rating: "4.8" }
+    ]
+  },
+  // --- NEW: MPPSC EXAM DATA ---
+  mppsc: {
+    title: "MPPSC Foundation",
+    description: "Comprehensive syllabus coverage tailored for Madhya Pradesh Public Service Commission.",
+    videos: [
+      { id: "mppsc-1", title: "MPPSC Prelims 2026", // FIXED: Changed standard watch link to the proper iframe embed link
+        embed: "https://www.youtube.com/embed/videoseries?list=PLt-EyYJP3Q8YZ0TCzCHqbQN6mW4v8gjeC", 
+        // FIXED: Updated the listId to match the actual MPPSC playlist
+        listId: "PLt-EyYJP3Q8YZ0TCzCHqbQN6mW4v8gjeC", lessons: 18, rating: "4.7" }
+    ]
   }
 };
 
@@ -79,7 +98,6 @@ const ExamPage = () => {
   
   const currentExam = examPlaylists[examName?.toLowerCase()];
 
-  // --- THE FIX: FORCE RELOAD ON URL CHANGE ---
   useEffect(() => {
     window.scrollTo(0, 0);
     setIsPageLoading(true);
@@ -91,7 +109,6 @@ const ExamPage = () => {
     return () => clearTimeout(timer);
   }, [examName]); 
 
-  // Custom function to open YouTube directly via Popup
   const handlePlaylistClick = (video) => {
     setIsRedirecting(true);
     setTimeout(() => {
@@ -128,10 +145,8 @@ const ExamPage = () => {
           <motion.div
             initial={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { duration: 0.6, ease: "easeInOut" } }}
-            // FIXED: Now natively supports light mode (bg-slate-50) and dark mode (bg-slate-950)
             className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white transform-gpu overflow-hidden"
           >
-            {/* Ambient Background for Loader */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none flex items-center justify-center">
                <motion.div animate={{ rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }} className="w-[80vh] h-[80vh] bg-[conic-gradient(from_0deg,transparent_0_340deg,rgba(59,130,246,0.15)_360deg)] dark:bg-[conic-gradient(from_0deg,transparent_0_340deg,rgba(59,130,246,0.25)_360deg)] rounded-full blur-3xl"></motion.div>
             </div>
@@ -141,7 +156,6 @@ const ExamPage = () => {
                 <motion.div 
                   animate={{ rotate: 360 }} 
                   transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }} 
-                  // FIXED: Ring border colors adapt to light/dark themes
                   className="absolute inset-0 border-4 border-slate-200 dark:border-slate-800 border-t-blue-500 border-r-purple-500 rounded-full"
                 />
                 <Sparkles size={28} className="text-blue-600 dark:text-blue-400 animate-pulse sm:w-[32px] sm:h-[32px]" />
@@ -149,7 +163,6 @@ const ExamPage = () => {
               
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-black mb-6 tracking-tight">Loading Exam Vault</h2>
               
-              {/* FIXED: Highly responsive, elegant, theme-aware Pro Tip box */}
               <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-800 px-4 sm:px-6 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl flex flex-col sm:flex-row items-center gap-2 sm:gap-3 shadow-lg max-w-[90vw]">
                  <Loader2 size={18} className="animate-spin text-purple-600 dark:text-purple-400 shrink-0 hidden sm:block" />
                  <p className="text-slate-600 dark:text-slate-400 text-[11px] sm:text-sm font-medium tracking-wide">
@@ -165,7 +178,6 @@ const ExamPage = () => {
       {/* --- MAIN PAGE CONTENT --- */}
       <div className="pt-24 md:pt-28 pb-32 md:pb-48 min-h-screen relative overflow-x-hidden font-sans w-full">
         
-        {/* Background layer absolute so it stops where footer begins */}
         <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
           <div className="absolute inset-0 bg-slate-50 dark:bg-slate-950 transition-colors duration-300"></div>
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] mix-blend-overlay"></div>
