@@ -376,10 +376,10 @@ const Home = () => {
 
       {/* --- FEATURED COURSES SLIDER --- */}
       <section className="py-16 md:py-24 bg-gradient-to-b from-slate-50 to-white dark:from-slate-800/50 dark:to-slate-900 border-y border-slate-100 dark:border-slate-800 relative z-10">
-        <div className="container mx-auto px-4 md:px-6 lg:px-10 max-w-[1400px]">
+        <div className="container mx-auto max-w-[1400px]">
           
-          {/* Header Controls (ARROWS MOVED BACK HERE) */}
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
+          {/* Header Controls */}
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4 px-4 md:px-6 lg:px-14">
             <div>
               <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary font-bold text-xs mb-3 tracking-widest uppercase">POPULAR COURSES</span>
               <h2 className="text-2xl md:text-4xl font-black text-slate-900 dark:text-white flex items-center gap-3 tracking-tight flex-wrap">
@@ -398,26 +398,10 @@ const Home = () => {
               >
                 View All Courses <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
-              
-              {/* SQUARE GLASSY ARROWS - TOP RIGHT */}
-              <div className="hidden md:flex gap-2 shrink-0">
-                <button 
-                  onClick={() => scrollFeatured('left')} 
-                  className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/60 dark:bg-slate-800/60 backdrop-blur-xl border border-white/80 dark:border-slate-700/80 text-slate-800 dark:text-slate-200 shadow-sm hover:bg-white/90 dark:hover:bg-slate-800/90 hover:shadow-[0_0_15px_rgba(124,58,237,0.4)] hover:border-purple-500/50 transition-all duration-300 transform-gpu active:scale-95"
-                >
-                  <ChevronLeft size={22} className="-ml-0.5" />
-                </button>
-                <button 
-                  onClick={() => scrollFeatured('right')} 
-                  className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/60 dark:bg-slate-800/60 backdrop-blur-xl border border-white/80 dark:border-slate-700/80 text-slate-800 dark:text-slate-200 shadow-sm hover:bg-white/90 dark:hover:bg-slate-800/90 hover:shadow-[0_0_15px_rgba(124,58,237,0.4)] hover:border-purple-500/50 transition-all duration-300 transform-gpu active:scale-95"
-                >
-                  <ChevronRight size={22} className="-mr-0.5" />
-                </button>
-              </div>
             </div>
             
             {/* Mobile swipe indicator */}
-            <div className="md:hidden flex items-center shrink-0 w-full justify-end">
+            <div className="md:hidden flex items-center shrink-0 w-full justify-end px-4">
               <motion.div animate={{ x: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }} className="flex items-center gap-1.5 text-primary font-bold text-[11px] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-3 py-1.5 rounded-full shadow-sm">
                 Swipe <ArrowRight size={12} strokeWidth={3} />
               </motion.div>
@@ -425,51 +409,89 @@ const Home = () => {
           </motion.div>
 
           {/* The Slider Container */}
-          <div className="relative w-full py-2">
-            <div ref={featuredSliderRef} className="flex items-stretch overflow-x-auto snap-x snap-mandatory gap-6 pb-10 pt-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] scroll-smooth w-full px-1">
-              {featuredCourses.map((course, idx) => (
-                <motion.a 
-                  key={idx} 
-                  href={course.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variants={fadeInUp} 
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, margin: "-50px" }}
-                  className="w-[85vw] sm:w-[320px] md:w-[360px] lg:w-[380px] shrink-0 snap-center sm:snap-start bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-[2rem] shadow-xl lg:hover:shadow-2xl border border-white/50 dark:border-slate-700 overflow-hidden flex flex-col transition-all duration-300 transform-gpu lg:hover:-translate-y-2 h-full group/card"
-                >
-                  <div className="w-full aspect-[5/4] bg-slate-100 dark:bg-slate-800/50 p-2 overflow-hidden border-b border-slate-100/50 dark:border-slate-700/50 relative shrink-0">
-                    {course.badge && (
-                      <div className="absolute top-4 right-4 z-20 px-2.5 py-1 text-white text-[10px] font-black uppercase tracking-wider rounded-md shadow-sm bg-gradient-to-r from-orange-500 to-red-500">
-                        {course.badge}
-                      </div>
+          <div className="relative w-full py-4 group/slider">
+            
+            {/* --- FLOATING SQUARE ARROWS (Center aligned, pushed completely outside cards) --- */}
+            <div className="absolute top-1/2 -translate-y-1/2 -left-2 md:-left-6 lg:-left-8 -right-2 md:-right-6 lg:-right-8 flex justify-between z-30 pointer-events-none hidden md:flex">
+              <button 
+                onClick={() => scrollFeatured('left')} 
+                className="pointer-events-auto w-12 h-12 flex items-center justify-center rounded-xl bg-white/60 dark:bg-slate-800/60 backdrop-blur-xl border border-white/80 dark:border-slate-700/80 text-slate-800 dark:text-slate-200 shadow-[0_8px_30px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.3)] hover:bg-white/90 dark:hover:bg-slate-800/90 hover:shadow-[0_0_25px_rgba(124,58,237,0.4)] hover:border-purple-500/50 transition-all duration-300 transform-gpu hover:scale-105 active:scale-95"
+              >
+                <ChevronLeft size={26} className="-ml-0.5" />
+              </button>
+              <button 
+                onClick={() => scrollFeatured('right')} 
+                className="pointer-events-auto w-12 h-12 flex items-center justify-center rounded-xl bg-white/60 dark:bg-slate-800/60 backdrop-blur-xl border border-white/80 dark:border-slate-700/80 text-slate-800 dark:text-slate-200 shadow-[0_8px_30px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.3)] hover:bg-white/90 dark:hover:bg-slate-800/90 hover:shadow-[0_0_25px_rgba(124,58,237,0.4)] hover:border-purple-500/50 transition-all duration-300 transform-gpu hover:scale-105 active:scale-95"
+              >
+                <ChevronRight size={26} className="-mr-0.5" />
+              </button>
+            </div>
+
+            {/* Added extra inner padding (md:px-12 lg:px-14) so cards don't touch the arrows */}
+            <div ref={featuredSliderRef} className="flex items-stretch overflow-x-auto snap-x snap-mandatory gap-6 pb-10 pt-4 px-4 md:px-12 lg:px-14 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] scroll-smooth w-full">
+              {featuredCourses.map((course, idx) => {
+                
+                const CardWrapper = course.isClosed ? 'div' : 'a';
+                const wrapperProps = course.isClosed ? {} : { href: course.link, target: "_blank", rel: "noopener noreferrer" };
+                const priceDisplay = course.price ? (String(course.price).includes('₹') ? course.price : `₹${course.price}`) : 'Free';
+                const oldPriceDisplay = course.oldPrice ? (String(course.oldPrice).includes('₹') ? course.oldPrice : `₹${course.oldPrice}`) : '';
+
+                return (
+                  <motion.div
+                    key={course.id || idx}
+                    variants={fadeInUp} 
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-50px" }}
+                    className={`w-[85vw] sm:w-[320px] md:w-[360px] lg:w-[380px] shrink-0 snap-center sm:snap-start relative group/card flex flex-col outline-none transition-all duration-300 transform-gpu lg:hover:-translate-y-2 h-full ${course.isClosed ? 'opacity-80' : ''}`}
+                  >
+                    {!course.isClosed && (
+                      <div className="absolute -inset-[2px] bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 rounded-[2.2rem] opacity-0 group-hover/card:opacity-100 blur-sm md:blur-md transition-all duration-500 -z-10 group-hover/card:animate-pulse"></div>
                     )}
-                    <div className="w-full h-full rounded-[1.2rem] overflow-hidden relative">
-                      <img src={course.img} alt={course.title} className="w-full h-full object-cover object-center transition-transform duration-700 lg:group-hover/card:scale-105 transform-gpu" loading="lazy" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/10 to-transparent opacity-80 lg:group-hover/card:opacity-40 transition-opacity duration-300 pointer-events-none"></div>
-                    </div>
-                  </div>
-                  
-                  <div className="p-5 flex-1 flex flex-col justify-between bg-white/5 dark:bg-transparent">
-                    <div className="mb-4 text-center">
-                      <span className="text-[10px] font-bold text-primary uppercase tracking-wider">{course.category}</span>
-                      <h3 className="text-base md:text-lg font-bold text-slate-900 dark:text-white mt-1 line-clamp-2 leading-snug lg:group-hover/card:text-primary transition-colors">{course.title}</h3>
-                    </div>
                     
-                    <div className="flex items-center justify-between gap-3 pt-4 border-t border-slate-200/50 dark:border-slate-700/50 mt-auto">
-                      <div className="flex flex-col text-left shrink-0">
-                        <span className="text-[10px] text-slate-500 dark:text-slate-400 line-through font-semibold mb-0.5 whitespace-nowrap">{course.oldPrice}</span>
-                        <span className="text-sm sm:text-base font-black text-slate-900 dark:text-white leading-none tracking-tight">{course.price}</span>
+                    <CardWrapper 
+                      {...wrapperProps}
+                      className="flex-1 flex flex-col bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-white/50 dark:border-slate-700 rounded-[2rem] overflow-hidden shadow-xl lg:hover:shadow-2xl transition-all duration-300 m-[1px]"
+                    >
+                      <div className="w-full aspect-[5/4] bg-slate-100 dark:bg-slate-800/50 p-2 overflow-hidden border-b border-slate-100/50 dark:border-slate-700/50 relative shrink-0">
+                        {course.badge && (
+                          <div className={`absolute top-4 right-4 z-20 px-3 py-1 text-white text-[10px] font-black uppercase tracking-widest rounded-full shadow-md flex items-center gap-1 ${course.isClosed ? 'bg-slate-500' : 'bg-gradient-to-r from-orange-500 to-red-500'}`}>
+                            {!course.isClosed && <Flame size={12} />} {course.badge}
+                          </div>
+                        )}
+                        <div className="w-full h-full rounded-[1.2rem] overflow-hidden relative">
+                          <img src={course.img} alt={course.title} className={`w-full h-full object-cover object-center transition-transform duration-700 ${!course.isClosed && 'lg:group-hover/card:scale-105'} ${course.isClosed && 'grayscale opacity-70'} transform-gpu`} loading={idx > 3 ? "lazy" : "eager"} />
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/10 to-transparent opacity-80 lg:group-hover/card:opacity-40 transition-opacity duration-300 pointer-events-none"></div>
+                        </div>
                       </div>
                       
-                      <button className="px-3 sm:px-4 py-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-bold text-[10px] sm:text-xs shadow-md lg:group-hover/card:bg-primary dark:lg:group-hover/card:bg-primary lg:group-hover/card:text-white transition-all flex items-center justify-center gap-1.5 transform-gpu active:scale-95 shrink-0">
-                        Enroll<span className="hidden sm:inline"> Now</span><ExternalLink size={12} className="hidden sm:block lg:group-hover/card:translate-x-0.5 lg:group-hover/card:-translate-y-0.5 transition-transform" />
-                      </button>
-                    </div>
-                  </div>
-                </motion.a>
-              ))}
+                      <div className="p-5 flex-1 flex flex-col justify-between bg-white/5 dark:bg-transparent">
+                        <div className="mb-4 text-center">
+                          <span className="text-[10px] font-bold text-primary uppercase tracking-wider">{course.category}</span>
+                          <h3 className="text-base md:text-lg font-bold text-slate-900 dark:text-white mt-1 line-clamp-2 leading-snug lg:group-hover/card:text-primary transition-colors">{course.title}</h3>
+                        </div>
+                        
+                        <div className="flex items-center justify-between gap-3 pt-4 border-t border-slate-200/50 dark:border-slate-700/50 mt-auto">
+                          <div className="flex flex-col text-left shrink-0">
+                            <span className="text-[10px] text-slate-500 dark:text-slate-400 line-through font-semibold mb-0.5 whitespace-nowrap">{oldPriceDisplay}</span>
+                            <span className="text-sm sm:text-base font-black text-slate-900 dark:text-white leading-none tracking-tight">{priceDisplay}</span>
+                          </div>
+                          
+                          {course.isClosed ? (
+                            <div className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-500 rounded-xl font-bold text-[10px] sm:text-xs shadow-inner cursor-not-allowed border border-slate-200 dark:border-slate-700 shrink-0">
+                              Closed <Lock size={12} />
+                            </div>
+                          ) : (
+                            <button className="px-3 sm:px-4 py-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-bold text-[10px] sm:text-xs shadow-md lg:group-hover/card:bg-primary dark:lg:group-hover/card:bg-primary lg:group-hover/card:text-white transition-all flex items-center justify-center gap-1.5 transform-gpu active:scale-95 shrink-0">
+                              {course.link?.includes('t.me') ? "Join" : "Enroll"}<span className="hidden sm:inline"> Now</span><ExternalLink size={12} className="hidden sm:block lg:group-hover/card:translate-x-0.5 lg:group-hover/card:-translate-y-0.5 transition-transform" />
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    </CardWrapper>
+                  </motion.div>
+                );
+              })}
               <div className="shrink-0 w-2 sm:w-4"></div>
             </div>
           </div>
@@ -719,3 +741,4 @@ const Home = () => {
 };
 
 export default Home;
+
